@@ -15,9 +15,10 @@
     <script>
         $(document).ready(function() {
             $('#fetchButton').on('click', function() {
+               
                 const name = $('#nameInput').val();
                 $.ajax({
-                    url: 'http://cros-test.lovestoblog.com/fetch.php',
+                    url: name,
                     type: 'GET',
                     // data: { name: name },
                     success: function(data) {
