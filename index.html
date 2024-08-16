@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Fetch API Example with jQuery</h1>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button id="fetchButton">Fetch Data</button>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#fetchButton').on('click', function() {
+                const name = $('#nameInput').val();
+                $.ajax({
+                    url: 'http://cros-test.lovestoblog.com/fetch.php',
+                    type: 'GET',
+                    // data: { name: name },
+                    success: function(data) {
+                        $('#result').text(
+                            `Status: ${data.status}\nMessage: ${data.message}\nTimestamp: ${data.timestamp}`
+                        );
+                    },
+                    error: function(xhr, status, error) {
+                        $('#result').text('Error: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
